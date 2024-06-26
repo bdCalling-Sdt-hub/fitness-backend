@@ -112,6 +112,7 @@ const getBlogs = async (query: Record<string, unknown>, user: IReqUser) => {
       data: result,
     };
   }
+  //
   if (role === ENUM_USER_ROLE.ADMIN || role === ENUM_USER_ROLE.SUPER_ADMIN) {
     const postQuery = (
       await new QueryBuilder(Blog.find({}), query)
