@@ -7,7 +7,7 @@ import { uploadFile } from '../../middlewares/fileUploader';
 const router = Router();
 router.post(
   '/add-class',
-  auth(ENUM_USER_ROLE.ADMIN),
+  auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.SUPER_ADMIN),
   uploadFile(),
   ClassController.createClass,
 );

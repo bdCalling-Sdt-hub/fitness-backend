@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Request } from 'express';
 import multer from 'multer';
@@ -90,7 +91,7 @@ export const uploadFile = () => {
     { name: 'cover_image', maxCount: 1 },
     { name: 'profile_image', maxCount: 1 },
     { name: 'webp', maxCount: 1 },
-    { name: 'video', maxCount: 5 },
+    { name: 'video' },
     { name: 'pdf', maxCount: 1 },
     { name: 'docs', maxCount: 1 },
   ]);
