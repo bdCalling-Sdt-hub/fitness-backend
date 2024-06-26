@@ -78,7 +78,9 @@ const mySubscription = async (req: Request) => {
   if (!isExistUser) {
     throw new ApiError(404, 'User not found');
   }
-  const subscription = await Subscription.findOne({ user_id: userId });
+  const subscription = await Subscription.findOne({ user_id: userId }).sort({
+    createdAt: -1,
+  });
   if (!subscription) {
     return null;
   }
