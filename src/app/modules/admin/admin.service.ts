@@ -29,7 +29,7 @@ import { deleteAdminEmailBody } from '../../../mails/delete.admin';
 
 //*
 const registrationUser = async (userId: IReqUser, payload: IRegistration) => {
-  const { name, email, password } = payload;
+  const { name, email, password, role } = payload;
   const user = {
     name,
     email,
@@ -37,22 +37,22 @@ const registrationUser = async (userId: IReqUser, payload: IRegistration) => {
   };
   const isEmailExist = await User.findOne({ email });
   const findSuperAdmin = await User.findById(userId?.userId);
-  if (!findSuperAdmin) {
-    throw new ApiError(404, 'Super Admin Not Found');
-  }
+  // if (!findSuperAdmin) {
+  //   throw new ApiError(404, 'Super Admin Not Found');
+  // }
   if (isEmailExist) {
     throw new ApiError(400, 'Email already exist');
   }
-  payload.role = 'ADMIN';
+  payload.role = role;
   const newUser = await User.create(payload);
   const data = { user: { name: user.name } };
-  sendEmail({
-    email: findSuperAdmin?.email,
-    subject: 'Congratulations to register new admin successfully',
-    html: registrationSuccessEmailBody(data),
-  }).catch(error => {
-    logger.error('Failed to send email:', error);
-  });
+  // sendEmail({
+  //   email: findSuperAdmin?.email,
+  //   subject: 'Congratulations to register new admin successfully',
+  //   html: registrationSuccessEmailBody(data),
+  // }).catch(error => {
+  //   logger.error('Failed to send email:', error);
+  // });
   const { password: omit, ...userWithoutPassword } = newUser.toObject();
 
   return userWithoutPassword;

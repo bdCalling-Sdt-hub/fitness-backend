@@ -13,7 +13,7 @@ export type IRegistration = {
   email: string;
   password: string;
   avatar?: string;
-  role: 'ADMIN' | 'USER';
+  role: 'ADMIN' | 'USER' | 'SUPER_ADMIN';
   gender: string;
   age: string;
 };
