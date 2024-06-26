@@ -18,7 +18,7 @@ async function main() {
     logger.info('DB Connected on Successfully');
     const port =
       typeof config.port === 'number' ? config.port : Number(config.port);
-    server.listen(port, () => {
+    server.listen(port, config.base_url as string, () => {
       logger.info(`Example app listening on port ${config.port}`);
     });
   } catch (error) {
@@ -39,7 +39,7 @@ async function main() {
 main().catch(err => errorLogger.error(err));
 
 process.on('SIGTERM', () => {
-  console.info('SIGTERM is received');
+  logger.info('SIGTERM is received');
   if (server) {
     server.close();
   }
