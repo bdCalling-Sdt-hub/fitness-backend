@@ -6,40 +6,7 @@ import httpStatus from 'http-status';
 import fs from 'fs';
 import path from 'path';
 import { CustomRequest } from '../../../interfaces/common';
-//*
-// const addBanner = async (req: CustomRequest) => {
-//   const { files, body } = req;
 
-//   let video = undefined;
-//   let logo = undefined;
-
-//   const isExist = await Banner.findOne();
-//   if (isExist) {
-//     if (video) {
-//       //@ts-ignore
-//       const videoPath = path.join('uploads', 'videos', video.filename);
-
-//       if (fs.existsSync(videoPath)) {
-//         fs.unlinkSync(videoPath);
-//       }
-//     }
-//     throw new ApiError(httpStatus.BAD_REQUEST, 'All ready have an banner');
-//   }
-
-//   if (files?.video) {
-//     video = `/videos/${files.video[0].filename}`;
-//   }
-//   if (files?.logo) {
-//     logo = `/images/image/${files.logo[0].filename}`;
-//   }
-//   return await Banner.create({
-//     video,
-//     logo,
-//     //@ts-ignore
-//     title: body && body.title,
-//   });
-// };
-//*
 const addBanner = async (req: CustomRequest) => {
   const { files, body } = req;
 
@@ -101,6 +68,8 @@ const addBanner = async (req: CustomRequest) => {
       logo,
       //@ts-expect-error
       title: body && body.title,
+      //@ts-expect-error
+      buttonName: body && body.buttonName,
     });
 
     return newBanner;

@@ -11,6 +11,9 @@ const bannerSchema = new Schema(
     logo: {
       type: String,
     },
+    buttonName: {
+      type: String,
+    },
   },
   {
     timestamps: true,
