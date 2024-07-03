@@ -25,6 +25,7 @@ const upgradeSubscription = async (req: Request) => {
     throw new ApiError(404, 'Plan not found');
   }
   checkUser.isSubscribed = true;
+
   const startDate = new Date();
   const endDate = new Date(
     startDate.getTime() + subscriptionPlan.duration * 24 * 60 * 60 * 1000,

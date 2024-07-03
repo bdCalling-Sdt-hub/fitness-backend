@@ -43,8 +43,6 @@ const updateLogo = async (req: Request) => {
   const { ...logoData } = req.body;
 
   //@ts-ignore
-
-  //@ts-ignore
   if (files && files?.image) {
     //@ts-ignore
     logoData.image = `/images/image/${files.image[0].filename}`;
