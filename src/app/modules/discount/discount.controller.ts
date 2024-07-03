@@ -4,7 +4,7 @@ import { DiscountService } from './discount.service';
 import sendResponse from '../../../shared/sendResponse';
 
 const insertIntoDB = catchAsync(async (req: Request, res: Response) => {
-  const result = await DiscountService.insertIntoDB(req);
+  const result = await DiscountService.insertIntoDB(req as any);
 
   sendResponse(res, {
     statusCode: 200,
@@ -43,8 +43,18 @@ const deleteDiscount = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+const getSingle = catchAsync(async (req: Request, res: Response) => {
+  const result = await DiscountService.getSingle(req);
+
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: 'Successful',
+    data: result,
+  });
+});
 const updateDiscount = catchAsync(async (req: Request, res: Response) => {
-  const result = await DiscountService.updateDiscount(req);
+  const result = await DiscountService.updateDiscount(req as any);
 
   sendResponse(res, {
     statusCode: 200,
@@ -60,4 +70,5 @@ export const DiscountController = {
   getActiveDiscount,
   deleteDiscount,
   updateDiscount,
+  getSingle,
 };

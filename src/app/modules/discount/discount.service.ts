@@ -34,6 +34,16 @@ const deleteDiscount = async (req: Request) => {
   }
   return await Discount.findByIdAndDelete(id);
 };
+const getSingle = async (req: Request) => {
+  const { code } = req.params;
+  const isExist = await Discount.findOne({
+    $and: [{ code: code }, { isActive: true }],
+  });
+  if (!isExist) {
+    throw new ApiError(404, 'Discount not found');
+  }
+  return await Discount.findOne({ code });
+};
 const updateDiscount = async (req: CustomRequest) => {
   const { id } = req.params;
   const { files } = req;
@@ -56,4 +66,5 @@ export const DiscountService = {
   getActiveDiscount,
   deleteDiscount,
   updateDiscount,
+  getSingle,
 };
