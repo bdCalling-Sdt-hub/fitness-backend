@@ -42,7 +42,7 @@ const getSingle = async (req: Request) => {
   if (!isExist) {
     throw new ApiError(404, 'Discount not found');
   }
-  return await Discount.findOne({ code });
+  return isExist;
 };
 const updateDiscount = async (req: CustomRequest) => {
   const { id } = req.params;
