@@ -8,7 +8,7 @@ export type IAdmin = {
   user_name: string;
   phone_number: string;
   address: string;
-  gender: 'male' | 'female' | 'others';
+  gender: 'male' | 'female' | 'other' | 'prefer not to say';
   password: string;
   role: 'ADMIN' | 'SUPER_ADMIN';
   profile_image: string;
