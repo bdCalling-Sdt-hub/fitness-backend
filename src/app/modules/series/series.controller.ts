@@ -41,6 +41,7 @@ const deleteSeries = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+
 const updateSeries = catchAsync(async (req: Request, res: Response) => {
   const result = await seriesService.updateSeries(req);
   sendResponse(res, {
@@ -51,10 +52,44 @@ const updateSeries = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const createCatagory = catchAsync(async (req: Request, res: Response) => {
+ 
+  const result = await seriesService.createCatagory(req); 
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: 'Catagory create successful',
+    data: result,
+  });
+});
+
+const getCatagory = catchAsync(async (req: Request, res: Response) => {
+  const result = await seriesService.getCatagorys(); 
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: 'Catagory get successful',
+    data: result,
+  });
+});
+
+const deleteCatagory = catchAsync(async (req: Request, res: Response) => {
+  const result = await seriesService.deleteCatagorys(req); 
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: 'Catagory delete successful',
+    data: result,
+  });
+});
+
 export const SeriesController = {
   createSeries,
   allSeries,
   singleSeries,
   deleteSeries,
   updateSeries,
+  createCatagory,
+  getCatagory,
+  deleteCatagory
 };

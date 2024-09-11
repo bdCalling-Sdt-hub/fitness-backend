@@ -12,6 +12,7 @@ const totalCount = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+
 const totalIncomes = catchAsync(async (req: Request, res: Response) => {
   const result = await DashboardService.totalIncomes();
   sendResponse(res, {
@@ -21,6 +22,7 @@ const totalIncomes = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+
 const getMonthlySubscriptionGrowth = catchAsync(
   async (req: Request, res: Response) => {
     const year = req.query.year

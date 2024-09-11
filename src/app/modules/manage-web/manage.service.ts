@@ -18,7 +18,6 @@ const addPrivacyPolicy = async (payload: any) => {
   if (checkIsExist) {
     await PrivacyPolicy.findOneAndUpdate({}, payload, {
       new: true,
-
       runValidators: true,
     });
   } else {
@@ -117,7 +116,6 @@ const addTermsConditions = async (payload: any) => {
   if (checkIsExist) {
     await TermsConditions.findOneAndUpdate({}, payload, {
       new: true,
-
       runValidators: true,
     });
   } else {

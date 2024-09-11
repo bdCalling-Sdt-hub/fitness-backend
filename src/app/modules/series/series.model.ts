@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { ISeries } from './series.interface';
+import { ICatagory, ISeries } from './series.interface';
 
 const seriesSchema = new Schema<ISeries>(
   {
@@ -21,3 +21,14 @@ const seriesSchema = new Schema<ISeries>(
   },
 );
 export const Series = model('Series', seriesSchema);
+
+const catagorySchema = new Schema<ICatagory>(
+  {
+     name: {
+      type: String,
+      required: true,
+    }
+  },
+  
+);
+export const Catagory = model('Catagory', catagorySchema);

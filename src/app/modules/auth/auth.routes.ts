@@ -10,17 +10,20 @@ import { UserValidation } from '../user/user.validations';
 import { AuthValidation } from './auth.validations';
 
 const router = express.Router();
+
 //*User
 router.post(
   '/register',
   validateRequest(UserValidation.create),
   UserController.registrationUser,
 );
+
 router.post(
   '/login',
   validateRequest(AuthValidation.loginZodSchema),
   UserController.login,
 );
+
 router.post('/refresh-token', UserController.refreshToken);
 router.get(
   '/admin/users',
@@ -63,7 +66,7 @@ router.patch(
 //* Admin Authentication Start
 router.post(
   '/admin/register',
-  validateRequest(AdminValidation.create),
+  // validateRequest(AdminValidation.create),
   AdminController.registrationUser,
 );
 router.post(

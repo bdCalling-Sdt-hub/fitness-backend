@@ -5,7 +5,6 @@ import sendResponse from '../../../shared/sendResponse';
 
 const makeOrder = catchAsync(async (req: Request, res: Response) => {
   const result = await OrderService.makeOrder(req);
-
   sendResponse(res, {
     statusCode: 200,
     success: true,
@@ -13,9 +12,9 @@ const makeOrder = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+
 const getAllOrders = catchAsync(async (req: Request, res: Response) => {
   const result = await OrderService.getAllOrders(req.query);
-
   sendResponse(res, {
     statusCode: 200,
     success: true,
@@ -23,9 +22,9 @@ const getAllOrders = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+
 const getSingle = catchAsync(async (req: Request, res: Response) => {
   const result = await OrderService.getSingle(req.params.id);
-
   sendResponse(res, {
     statusCode: 200,
     success: true,
@@ -33,9 +32,9 @@ const getSingle = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+
 const myOrders = catchAsync(async (req: Request, res: Response) => {
   const result = await OrderService.myOrders(req);
-
   sendResponse(res, {
     statusCode: 200,
     success: true,
@@ -43,9 +42,9 @@ const myOrders = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+
 const updateOrder = catchAsync(async (req: Request, res: Response) => {
   const result = await OrderService.updateOrder(req);
-
   sendResponse(res, {
     statusCode: 200,
     success: true,

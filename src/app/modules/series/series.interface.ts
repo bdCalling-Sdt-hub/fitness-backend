@@ -7,3 +7,7 @@ export type ISeries = {
   video: string;
   program: Types.ObjectId | IProgram;
 };
+
+export type ICatagory = { 
+  name: string; 
+};

@@ -5,7 +5,7 @@ import ApiError from '../../../errors/ApiError';
 import { IGenericResponse } from '../../../interfaces/paginations';
 import QueryBuilder from '../../../builder/QueryBuilder';
 import { ISeries } from './series.interface';
-import { Series } from './series.model';
+import { Catagory, Series } from './series.model';
 import { Request } from 'express';
 import { Classes } from '../class/class.model';
 
@@ -97,10 +97,46 @@ const updateSeries = async (req: Request) => {
   }).populate('program');
   return result;
 };
+
+const createCatagory = async (req: Request) => {
+  const { name } = req.body;
+  const catagory = await Catagory.findOne({name});
+  if (catagory) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Catagory alredy exist!');
+  } 
+  const result = await Catagory.create({name})
+  return result;
+};
+
+const getCatagorys = async () => { 
+  const catagory = await Catagory.find({});
+  if (!catagory) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Catagory not found!');
+  }  
+  return catagory;
+};
+
+const deleteCatagorys = async (req: Request) => { 
+  const { id } = req.params;
+
+  const catagory = await Catagory.findOne({_id: id});
+  if (!catagory) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Catagory not foud!');
+  } 
+
+
+  const result = await Catagory.findByIdAndDelete(id);
+  return result;
+};
+
+
 export const seriesService = {
   addSeries,
   getAllSeries,
   singleSeries,
   deleteSeries,
   updateSeries,
+  createCatagory,
+  getCatagorys,
+  deleteCatagorys  
 };
